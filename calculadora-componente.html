@@ -1,0 +1,72 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./suma-componente.html">
+<link rel="import" href="./resta-componente.html">
+<link rel="import" href="./multiplicacion-componente.html">
+<link rel="import" href="./division-componente.html">
+
+<dom-module id="calculadora-componente">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Operador1: [[operador1]], Operador2: [[operador2]]</h2>
+    <suma-componente suma="{{resultadoSuma}}" operador1="[[operador1]]" operador2="[[operador2]]"></suma-componente>
+    <resta-componente resta="{{resultadoResta}}"operador1="[[operador1]]" operador2="[[operador2]]"></resta-componente>
+    <multiplicacion-componente multiplicacion="{{resultadoMultiplicacion}}" operador1="[[operador1]]" operador2="[[operador2]]""></multiplicacion-componente>
+    <division-componente division="{{resultadoDivision}}" operador1="[[operador1]]" operador2="[[operador2]]"></division-componente>
+    <h2>"Resultado Suma: [[resultadoSuma]]", "Resultado Resta: [[resultadoResta]]", "Resultado Multiplicacion: [[resultadoMultiplicacion]]", "Resultado Division: [[resultadoDivision]]"</h2>
+  </template>
+
+  <script>
+    /**
+     * `calculadora-componente`
+     * &#34;ejemplo calculadora&#34;
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class CalculadoraComponente extends Polymer.Element {
+      static get is() { return 'calculadora-componente'; }
+      static get properties() {
+        return {
+          operador1: {
+            type: Number,
+            value: 0,
+            reflectToAttribute: true
+          },
+          operador2: {
+            type: Number,
+            value: 0,
+            reflectToAttribute: true,
+            observer: '_infinito'
+          },
+          resultadoSuma: {
+            type: Number
+          },
+          resultadoResta: {
+            type: Number
+          },
+          resultadoMultiplicacion: {
+            type: Number
+          },
+          resultadoDivision: {
+            type: Number
+          }
+        };
+      }
+      // Simple
+      _infinito(newValue, oldValue) {
+        console.log(newValue, oldValue);
+        if(newValue===0){
+          console.log('La división será Infinity')
+        }
+
+      }
+    }
+
+    window.customElements.define(CalculadoraComponente.is, CalculadoraComponente);
+  </script>
+</dom-module>

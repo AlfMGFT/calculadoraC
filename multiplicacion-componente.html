@@ -1,0 +1,42 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="multiplicacion-componente">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Multiplicación [[multiplicacion]]</h2>
+  </template>
+
+  <script>
+    /**
+     * `multiplicacion-componente`
+     * &#34;ejemplo multiplicacion&#34;
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MultiplicacionComponente extends Polymer.Element {
+      static get is() { return 'multiplicacion-componente'; }
+      static get properties() {
+        return {
+          multiplicacion: {
+            type: Number,
+            readOnly: true,
+            computed: '_getMultiplicacion(operador1, operador2)',
+            notify: true
+          }
+        };
+      }
+      // Computado
+      _getMultiplicacion(operador1, operador2) {
+        return operador1 * operador2;
+      }
+    }
+
+    window.customElements.define(MultiplicacionComponente.is, MultiplicacionComponente);
+  </script>
+</dom-module>
