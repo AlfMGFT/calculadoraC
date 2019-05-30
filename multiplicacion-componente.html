@@ -23,6 +23,17 @@
       static get is() { return 'multiplicacion-componente'; }
       static get properties() {
         return {
+          operador1: {
+            type: Number,
+            value: 10,
+            reflectToAttribute: true
+          },
+          operador2: {
+            type: Number,
+            value: 2,
+            reflectToAttribute: true,
+            observer: '_infinito'
+          },
           multiplicacion: {
             type: Number,
             readOnly: true,
