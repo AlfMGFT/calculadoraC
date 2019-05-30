@@ -12,10 +12,10 @@
       }
     </style>
     <h2>Operador1: [[operador1]], Operador2: [[operador2]]</h2>
-    <suma-componente suma="{{resultadoSuma}}" operador1="[[operador1]]" operador2="[[operador2]]"></suma-componente>
-    <resta-componente resta="{{resultadoResta}}"operador1="[[operador1]]" operador2="[[operador2]]"></resta-componente>
-    <multiplicacion-componente multiplicacion="{{resultadoMultiplicacion}}" operador1="[[operador1]]" operador2="[[operador2]]""></multiplicacion-componente>
-    <division-componente division="{{resultadoDivision}}" operador1="[[operador1]]" operador2="[[operador2]]"></division-componente>
+    <suma-componente suma='{{resultadoSuma}}' operador1='[[operador1]]' operador2='[[operador2]]'></suma-componente>
+    <resta-componente resta='{{resultadoResta}}' operador1='[[operador1]]' operador2='[[operador2]]'></resta-componente>
+    <multiplicacion-componente multiplicacion='{{resultadoMultiplicacion}}' operador1='[[operador1]]' operador2='[[operador2]]'></multiplicacion-componente>
+    <division-componente division='{{resultadoDivision}}' operador1='[[operador1]]' operador2='[[operador2]]'></division-componente>
     <h2>"Resultado Suma: [[resultadoSuma]]", "Resultado Resta: [[resultadoResta]]", "Resultado Multiplicacion: [[resultadoMultiplicacion]]", "Resultado Division: [[resultadoDivision]]"</h2>
   </template>
 
@@ -34,12 +34,12 @@
         return {
           operador1: {
             type: Number,
-            value: 0,
+            value: 10,
             reflectToAttribute: true
           },
           operador2: {
             type: Number,
-            value: 0,
+            value: 2,
             reflectToAttribute: true,
             observer: '_infinito'
           },
@@ -59,9 +59,10 @@
       }
       // Simple
       _infinito(newValue, oldValue) {
-        console.log(newValue, oldValue);
-        if(newValue===0){
-          console.log('La división será Infinity')
+        //console.log(newValue, oldValue);
+        if( newValue === 0 ){
+          console.log('La división será Infinity');
+          this.operador2=1;
         }
 
       }
